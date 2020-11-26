@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            height: 100vh;
+            background: black;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            height: 100vh;
+            width: 100%;
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-panel, .right-panel {
+            width: 50%;
+            height: 100vh;
+            position: absolute;
+        }
+        .left-panel {
+            background: gray;
+            left: 0;
+        }
+        .right-panel {
+            background: lightgray;
+            right: 0;
+        }
+        .absolute-click {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            background-color: black;
+            border-radius: 100%;
+            margin: 30px;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 0 3px white, 0 0 0 6px black;
+            cursor: pointer;
+            transition: 1s all;
+        }
+        .welcome {
+            color: white;
+        }
+
+        .logo {
+            animation: beat-infinite 1s infinite;
+        }
+        .slide-left {
+            animation: left-out 2s 1 forwards;
+        }
+        .slide-right {
+            animation: right-out 2s 1 forwards;
+        }
+        .hide {
+            animation: hideout 3.5s 1 forwards;
+        }
+        @keyframes hideout {
+            from {
+                opacity: 1;
+            }   
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        @keyframes left-out {
+            from {
+                transform: translateX(0%);
+            }   
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        @keyframes right-out {
+            from {
+                transform: translateX(0%);
+            }   
+            to {
+                transform: translateX(100%);
+            }
+        }
+        @keyframes beat-infinite {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(.8);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel" id="lpanel"></div>
+        <div class="right-panel" id="rpanel"></div>
+        <div class="absolute-click" id="clickOnce">
+            <div id="welcome" class="logo welcome" onclick="openCortina()"></div>
+        </div>
+
+
+        <div class="content" style="color: white;">
+            <button onclick="again()">do it again</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        var lpanel = document.getElementById("lpanel")
+        var rpanel = document.getElementById("rpanel")
+        var once = document.getElementById("clickOnce")
+        var welcome = document.getElementById("welcome")
+
+
+        const openCortina = () => {
+            lpanel.classList.add("slide-left")
+            rpanel.classList.add("slide-right")
+            once.classList.add("hide")
+            welcome.classList.remove("logo")
+            welcome.innerHTML="<h1>Bem vindo</h1>"
+        }
+
+        const again = () => {
+            window.location.reload()
+        }
+    </script>
+</body>
+</html>
