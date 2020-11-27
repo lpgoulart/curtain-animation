@@ -13,7 +13,7 @@
         }
         .container {
             height: 100vh;
-            background: black;
+            background: gray;
             display: flex;
             position: relative;
             overflow: hidden;
@@ -47,11 +47,11 @@
             position: absolute;
         }
         .left-panel {
-            background: gray;
+            background: black;
             left: 0;
         }
         .right-panel {
-            background: lightgray;
+            background: black;
             right: 0;
         }
         .absolute-click {
@@ -72,6 +72,10 @@
             box-shadow: 0 0 0 3px white, 0 0 0 6px black;
             cursor: pointer;
             transition: 1s all;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .welcome {
             color: white;
@@ -81,10 +85,10 @@
             animation: beat-infinite 1s infinite;
         }
         .slide-left {
-            animation: left-out 2s 1 forwards;
+            animation: left-out 2.5s 1 forwards;
         }
         .slide-right {
-            animation: right-out 2s 1 forwards;
+            animation: right-out 2.5s 1 forwards;
         }
         .hide {
             animation: hideout 3.5s 1 forwards;
@@ -100,18 +104,18 @@
         }
         @keyframes left-out {
             from {
-                transform: translateX(0%);
+                transform: translateX(0%) skew(0deg);
             }   
             to {
-                transform: translateX(-100%);
+                transform: translateX(-120%) skew(-15deg);
             }
         }
         @keyframes right-out {
             from {
-                transform: translateX(0%);
+                transform: translateX(0%) skew(0deg);
             }   
             to {
-                transform: translateX(100%);
+                transform: translateX(120%) skew(15deg);
             }
         }
         @keyframes beat-infinite {
@@ -136,7 +140,9 @@
         <div class="left-panel" id="lpanel"></div>
         <div class="right-panel" id="rpanel"></div>
         <div class="absolute-click" id="clickOnce">
-            <div id="welcome" class="logo welcome" onclick="openCortina()"></div>
+            <div id="welcome" class="logo welcome" onclick="openCortina()">
+                Start
+            </div>
         </div>
 
 
